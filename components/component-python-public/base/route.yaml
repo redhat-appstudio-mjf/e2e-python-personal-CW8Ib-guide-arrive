@@ -1,0 +1,23 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: component-python-public
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: component-python-public
+    app.kubernetes.io/part-of: e2e-python-personal
+  name: component-python-public
+  namespace: e2e-demo-tnaf
+spec:
+  port:
+    targetPort: 8081
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: component-python-public
+    weight: 100
+status: {}
